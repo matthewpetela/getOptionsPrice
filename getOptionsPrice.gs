@@ -6,15 +6,16 @@ function getOptionsPrice(symbol, option_code) {
   var call_options = stock_json.data;
   var j;
   var i;
+  var k;
   for (i = 0; i < call_options.length; i ++){
     for (j = 0; j < call_options[i].options.CALL.length; j++){
       if (call_options[i].options.CALL[j].contractName == option_code){
        return call_options[i].options.CALL[j].lastPrice;
       }
     }
-    for (j = 0; j < call_options[i].options.PUT[j].length; j++){
-      if (call_options[i].options.PUT[j].contractName == option_code){
-       return call_options[i].options.PUT[j].lastPrice;
+    for (k = 0; k < call_options[i].options.PUT.length; k++){
+      if (call_options[i].options.PUT[k].contractName == option_code){
+       return call_options[i].options.PUT[k].lastPrice;
       }
     }
   }
